@@ -22,13 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white">
         <SessionWrapper>
           <Navbar />
-          <div className=" top-0 z-[-999] min-h-[85.6vh] h-screen w-full bg-[#000000] bg-[radial-gradient(#0f172c_2px,#00091d_1px)] bg-[size:20px_20px] text-white"></div>
-          {children}
+          <div className=" min-h-[85.8vh] bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white">
+            {children}
+          </div>
           <Footer />
-          
         </SessionWrapper>
       </body>
     </html>
