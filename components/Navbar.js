@@ -40,7 +40,7 @@ const Navbar = () => {
                                 <Link href="#" className="inline-flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg text-gray-500 font-semibold flex-1 items-center w-full">Settings</Link>
                             </li>
                             <li>
-                                <Link onClick={() => signOut()} href="#" className="inline-flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg text-gray-500 font-semibold flex-1 items-center w-full">Sign out</Link>
+                                <div onClick={() => signOut()} className="inline-flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg text-gray-500 font-semibold flex-1 items-center w-full">Sign out</div>
                             </li>
                         </ul>
                     </div>
