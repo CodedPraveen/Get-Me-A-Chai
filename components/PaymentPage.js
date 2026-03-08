@@ -16,7 +16,7 @@ const PaymentPage = ({ username }) => {
 
     const pay = async (amount) => {
         // Get the order Id
-        
+
         let a = await initiate(amount, username, paymentform)
         let orderId = a.id
         var options = {
@@ -27,7 +27,7 @@ const PaymentPage = ({ username }) => {
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
             "order_id": orderId, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "callback_url": `${process.env.URL}/api/razorpay`,
+            "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
                 "name": "Gaurav Kumar", //your customer's name
                 "email": "gaurav.kumar@example.com",
@@ -92,11 +92,11 @@ const PaymentPage = ({ username }) => {
                         <h2 className='text-2xl font-bold mb-5'>Make a payment</h2>
 
                         <div className="flex gap-2 flex-col">
-                            <input onChange={handleChange} value={paymentform.name} name='name' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Name' />
-                            <input onChange={handleChange} value={paymentform.message} name='message' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Message' />
+                            <input onChange={()=>handleChange} value={paymentform.name} name='name' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Name' />
+                            <input onChange={()=>handleChange} value={paymentform.message} name='message' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Message' />
 
                             <div className="flex ">
-                                <input onChange={handleChange} value={paymentform.amount} name='amount' type="number" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Amount' />
+                                <input onChange={()=>handleChange} value={paymentform.amount} name='amount' type="number" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Amount' />
                                 <button type="button" className="text-white from-purple-600 to-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 ml-2 py-2.5 text-center leading-5 ">Pay</button>
                             </div>
 

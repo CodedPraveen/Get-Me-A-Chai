@@ -26,8 +26,9 @@ export const initiate = async (amount, to_username, paymentform) => {
         oid: order.id,
         amount: amount,
         to_user: to_username,
-        name: paymentform.name,
-        message: paymentform.message
+        name: paymentform?.name || "paymentform name not found",
+        message: paymentform?.message || "also message not found",
+        done: false
     })
 
     return order

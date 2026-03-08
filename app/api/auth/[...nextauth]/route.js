@@ -38,6 +38,7 @@ const authoptions = NextAuth({
                         email: user.email,
                         username: user.email.split("@")[0],
                     })
+                    await newUser.save()
                 }
 
                 return true
@@ -47,7 +48,9 @@ const authoptions = NextAuth({
             await connectDB()
             const dbUser = await User.findOne({ email: session.user.email })
             console.log(dbUser);
-            session.user.name = dbUser.username
+            if (token) {
+                session.user.name = dbUser.username
+            }
             return session
         }
     }
