@@ -7,6 +7,7 @@ import User from '@/models/User';
 import connectDB from '@/db/connectDB';
 
 const authoptions = NextAuth({
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         // OAuth authentication providers...
         GitHubProvider({
