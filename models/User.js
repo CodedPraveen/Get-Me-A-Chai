@@ -11,6 +11,7 @@ const UserSchema = new Schema({
     razorpaysecret: { type: String },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
+    // amount: { type: String, default: "0" },
 });
 
 export default mongoose.models.User || model("User", UserSchema);

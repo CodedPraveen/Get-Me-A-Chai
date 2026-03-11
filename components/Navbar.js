@@ -8,7 +8,7 @@ const Navbar = () => {
     const { data: session } = useSession();
 
     return (
-        <nav className='bg-[#00092d] text-white flex justify-between items-center px-4 h-14'>
+        <nav className='bg-gradient-to-r from-[#00092d] text-white flex justify-between items-center px-4 h-14'>
             <div className="logo font-bold"><Link href="/"> GetMeAChai</Link> </div>
             {/* <ul className='flex gap-4'>
                 <li>Home</li>
@@ -21,10 +21,10 @@ const Navbar = () => {
                 {session && <>
                     <button id="dropdownHoverButton" className="text-white mb2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                         Welcome
-                        <span>
-                            <img width={28} className='ml-2' src="/Profile.svg" alt="Profile Photo" />
+                        <span className='ml-2'>
+                            {/* <img width={28} className='ml-2' src="/Profile.svg" alt="Profile Photo" /> */}
+                            {session.user.name}
                         </span>
-                        {/* {session.user.email} */}
                         <svg className="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7" /></svg>
                     </button>
 

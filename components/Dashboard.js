@@ -2,39 +2,75 @@
 import React, { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
+import { fetchuser, updateProfile } from '@/actions/useractions'
+import { NextResponse } from 'next/server'
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dashboard = () => {
-    const { data: session } = useSession();
+    const { data: session, update } = useSession();
     const router = useRouter()
 
-    const [form, setform] = useState({
-        name: "",
-        email: "",
-        username: "",
-        profilepic: "",
-        coverpic: "",
-        razorpayid: "",
-        razorpaysecret: ""
-    })
+    const [form, setform] = useState({})
 
     useEffect(() => {
+        // console.log("SESSION:", session)
         if (!session) {
             router.push("/login")
+            return
         }
+        const getData = async () => {
+            let u = await fetchuser(session.user.name)
+            // console.log("Fetched user:", u.amount)
+            setform(u)
+        }
+        getData()
+
     }, [session, router])
 
+
     const handleChange = (e) => {
+        // console.log("form:", form);
         setform({ ...form, [e.target.name]: e.target.value })
     }
+    const handleSubmit = async (e) => {
+        update()
+        let a = await updateProfile(e, session.user.name)
 
+        toast.info('Profile Updated Successfully!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
+        // return router.push(`${form.username}`)
+    }
 
     return (
         <>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+            />
             <div className='container mx-auto py-5 px-6 '>
                 <h1 className='text-center my-5 text-3xl font-bold'>Welcome to your Dashboard</h1>
 
-                <form className="max-w-2xl mx-auto">
-
+                <form className="max-w-2xl mx-auto" action={handleSubmit}>
+                    {/* {console.log("form:", form)} */}
                     <div className='my-2'>
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                         <input value={form.name ? form.name : ""} onChange={handleChange} type="text" name='name' id="name" className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
@@ -70,8 +106,14 @@ const Dashboard = () => {
                         <label htmlFor="razorpaysecret" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Razorpay Secret</label>
                         <input value={form.razorpaysecret ? form.razorpaysecret : ""} onChange={handleChange} type="text" name='razorpaysecret' id="razorpaysecret" className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                     </div>
+                    {/* input amount */}
+                    {/* <div className="my-2">
+                        <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
+                        <input value={form.amount ? form.amount : ""} onChange={handleChange} type="text" name='amount' id="amount" className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                    </div> */}
 
                     {/* Submit Button  */}
+
                     <div className="my-6">
                         <button type="submit" className="block w-full p-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-blue-500 focus:ring-4 focus:outline-none   dark:focus:ring-blue-800 font-medium text-sm">Save</button>
                     </div>

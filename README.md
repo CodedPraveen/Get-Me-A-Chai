@@ -1,37 +1,43 @@
-# Deploy link [Get Me A Chai](https://get-me-a-chai-inky.vercel.app/)
-## This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Deploy link [Get Me A Chai](https://get-me-a-chai-inky.vercel.app/)
 
-## Getting Started
+#### Get Me A Chai
 
-First, run the development server:
+Get Me A Chai is a web application that allows users to order tea online. It provides a convenient platform for tea lovers to browse through a variety of tea options, customize their orders, and have their favorite tea delivered to their doorstep. The application features a user-friendly interface, secure payment options, and efficient order tracking to ensure a seamless tea ordering experience. Whether you're craving a classic cup of chai or want to explore unique tea blends, Get Me A Chai has got you covered with its diverse menu and reliable service.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Frontend: React.js, Tailwind CSS
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Payment Gateway: Razorpay
+- Deployment: Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- User Authentication: Users can create accounts and log in to access personalized features.
+- Tea Menu: A wide variety of tea options with detailed descriptions and customization choices.
+- Secure Payments: Integration with Razorpay for safe and convenient payment processing.
+- Responsive Design: The application is designed to be mobile-friendly and accessible on various devices.
+- Admin Dashboard: An admin panel for managing tea inventory, orders, and user accounts.
 
-## Learn More
+#### Future Enhancements
 
-To learn more about Next.js, take a look at the following resources:
+- Implementing a recommendation system to suggest teas based on user preferences and order history.
+- Adding a review and rating system for users to share their feedback on different tea options.
+- Integrating a chatbot for customer support and assistance with orders.
+- Expanding the menu to include snacks and other complementary items to enhance the tea experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Conclusion
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Get Me A Chai aims to provide a delightful and convenient way for tea enthusiasts to enjoy their favorite beverage. With its user-friendly interface, secure payment options, and efficient order management, the application strives to create a seamless tea ordering experience for users. Whether you're a chai connoisseur or just looking for a quick cup of tea, Get Me A Chai is here to serve you with a variety of delicious options at your fingertips.
 
-## Deploy on Vercel
+#### Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Pravveen Kumar](https://github.com/CodedPraveen)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### After complete 
+ 
+ - For profile update two type of entry upload through file and update the profile with the url of the image. 
+ - For profile edit make a button to redirect to the dashboard and update the profile with the new details.
+ - Make a payment if feild is empty then resoan of there disable the button and show the error message to the user.
+ 

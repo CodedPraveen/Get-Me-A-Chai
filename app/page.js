@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Home() {
@@ -9,8 +10,12 @@ export default function Home() {
           A crowdfunding platform for creators. Get funded by your fans and followers. Start now!
         </p>
         <div className="flex gap-4">
-          <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 ">Start Here</button>
-          <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-.2.5 text-center leading-5 ">Read More</button>
+          <Link href={"/login"}>
+            <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 ">Start Here</button>
+          </Link>
+          <Link href={"/about"}>
+            <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 ">Read More</button>
+          </Link>
         </div>
       </div>
       <div className="bg-white h-1 opacity-10 my-5"></div>

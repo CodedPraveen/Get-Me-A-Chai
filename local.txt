@@ -26,9 +26,16 @@
 
 
 
+useEffect(() => {
+    if (!session) return
 
+    const loadUser = async () => {
+        const u = await fetchuser(session.user.name)
+        setform(u || {})
+    }
 
-
+    loadUser()
+}, [session])
 
 
 

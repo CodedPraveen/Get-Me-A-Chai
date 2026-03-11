@@ -10,21 +10,26 @@ export const POST = async (req) => {
     let body = await req.formData()
     body = Object.fromEntries(body)
 
-    console.log("Body:", body)
-    console.log("Searching Order:", body.razorpay_order_id)
-
     // Check if razorpayOrderId is present on the server
     let p = await Payment.findOne({ oid: body.razorpay_order_id })
-    console.log("Payment Found:", p)
     if (!p) {
         return NextResponse.json({ success: false, message: "Order Id not found" })
     }
+
+    // fetch the secrret of the user who is getting the payment
+    let user = await User.findOne({ username: p.to_user })
+    const secret = user.razorpaysecret
+
     // Verify the payment 
-    let xx = validatePaymentVerification({ "order_id": body.razorpay_order_id, "payment_id": body.razorpay_payment_id }, body.razorpay_signature, process.env.RAZORPAY_KEY_SECRET)
+    let xx = validatePaymentVerification({ "order_id": body.razorpay_order_id, "payment_id": body.razorpay_payment_id }, body.razorpay_signature, secret)
 
     if (xx) {
         // Update the payment status
         const updatedPayment = await Payment.findOneAndUpdate({ oid: body.razorpay_order_id }, { done: "true" }, { new: true })
+
+        // Increment the user's amount
+        // await User.findOneAndUpdate({ username: updatedPayment.to_user }, { $inc: { amount: Number(updatedPayment.amount) } })
+
         return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/${updatedPayment.to_user}?paymentdone=true`)
     } else {
         return NextResponse.json({ success: false, message: "Payment verification Failed" })
