@@ -36,7 +36,8 @@ Get Me A Chai aims to provide a delightful and convenient way for tea enthusiast
 - [Pravveen Kumar](https://github.com/CodedPraveen)
 
 #### After complete 
- 
+
+ - Add Auth in Deployment
  - For profile update two type of entry upload through file and update the profile with the url of the image. 
  - For profile edit make a button to redirect to the dashboard and update the profile with the new details.
  - Make a payment if feild is empty then resoan of there disable the button and show the error message to the user.
