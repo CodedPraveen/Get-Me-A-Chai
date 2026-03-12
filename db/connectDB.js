@@ -7,7 +7,7 @@ const connectDB = async () => {
     }
 
     try {
-        const conn = await mongoose.connect("mongodb://127.0.0.1:27017/chai");
+        const conn = await mongoose.connect(process.env.MONGODB_URL);
 
         // console.log(`MongoDB Connected: ${conn.connection.host}`);
 
