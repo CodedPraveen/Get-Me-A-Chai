@@ -28,7 +28,6 @@ const authoptions = NextAuth({
         async signIn({ user, account, profile, email, credentials }) {
             await connectDB()
             if (!user.email) {
-                // console.log("GitHub email not found")
                 return false
             }
             if (account.provider == "github") {
@@ -48,7 +47,6 @@ const authoptions = NextAuth({
         async session({ session, token, user }) {
             await connectDB()
             const dbUser = await User.findOne({ email: session.user.email })
-            // console.log(dbUser);
             if (token) {
                 session.user.name = dbUser.username
             }

@@ -1,13 +1,21 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center gap-4 text-white h-[35vh]">
-        <div className="font-bold text-4xl flex gap-2 items-center">Get Me A Chai <span><img className="w-16 invertImg" src="/tea.gif" alt="" /></span></div>
-        <p>
-          A crowdfunding platform for creators. Get funded by your fans and followers. Start now!
+      <div className="flex flex-col justify-center items-center gap-4 text-white h-[35vh] px-5 md:px-0 text-xs md:text-base ">
+        <div className="font-bold text-2xl flex md:gap-20 gap-2 md:text-5xl justify-center items-center">
+          Get Me A Chai
+          <span>
+            <img className="w-16 invertImg" src="/tea.gif" alt="" />
+          </span>
+        </div>
+        <p className="text-center md:text-left">
+          A crowdfunding platform for creators. Get funded by your fans and followers.
+        </p>
+        <p className="text-center md:text-left">
+          Get Me A Chai is a crowdfunding platform for creators. We help you get funded by your fans and followers. Start now!
         </p>
         <div className="flex gap-4">
           <Link href={"/login"}>
@@ -21,8 +29,8 @@ export default function Home() {
       <div className="bg-white h-1 opacity-10 my-5"></div>
 
       <div className="text-white container mx-auto pb-5">
-        <h2 className="text-3xl font-bold text-center my-12">Your Fans can Buy you a Chai</h2>
-        <div className="flex gap-5 justify-around ">
+        <h2 className="text-3xl font-semibold text-center my-12 mx-2 md:font-bold ">Your Fans can Buy you a Chai</h2>
+        <div className="flex gap-5 justify-around md:flex-row flex-col">
           <div className="item space-y-3 flex flex-col items-center">
             <img className="w-16 bg-slate-400 rounded-full p-1 text-black" src="/man.gif" alt="" />
             <p className="">Your Fans want to help </p>
@@ -43,9 +51,9 @@ export default function Home() {
 
       <div className="bg-white h-1 opacity-10 my-5"></div>
 
-      <div className="text-white container mx-auto pb-5 flex flex-col justify-center items-center">
+      <div className="text-white container mx-auto pb-7 flex flex-col justify-center items-center">
         <h2 className="text-3xl font-bold text-center my-12">Learn more about us</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/QtaorVNAwbI?si=ciz6hRMpr2OUtWJ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <iframe width="90%" height="auto" className="md:w-[550] md:h-[315] rounded-lg" src="https://www.youtube.com/embed/QtaorVNAwbI?si=ciz6hRMpr2OUtWJ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
       </div>
 
     </>

@@ -116,3 +116,7 @@ export default function About() {
         </div>
     );
 }
+export const metadata = {
+    title: 'About Us - Get Me A Chai',
+    description: '...',
+}
