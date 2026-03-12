@@ -50,7 +50,7 @@ const PaymentPage = ({ username }) => {
         setcurrentUser(u)
         let dbpayments = await fetchpayments(username)
         setPayments(dbpayments)
-        console.log(u, dbpayments);
+        // console.log(u, dbpayments);
     }
 
 
