@@ -9,6 +9,7 @@ const Login = () => {
   const { data: session } = useSession();
   const router = useRouter()
   useEffect(() => {
+    document.title = "Login - Get Me A Chai"
     if (session) {
       router.push("/dashboard")
     }
@@ -21,7 +22,7 @@ const Login = () => {
     <div className='text-white py-14 container mx-auto'>
       <h1 className='font-bold text-3xl text-center'>Login to Get your fans to support you</h1>
 
-      <div className="flex flex-col gap-2 justify-center items-center p-10  ">
+      <div className="flex flex-col gap-2 justify-center items-center p-10 pb-7">
 
         <button
           className="flex items-center w-full justify-start text-white border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">

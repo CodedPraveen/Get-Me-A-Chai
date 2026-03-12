@@ -50,7 +50,6 @@ const PaymentPage = ({ username }) => {
         setcurrentUser(u)
         let dbpayments = await fetchpayments(username)
         setPayments(dbpayments)
-        // console.log(u, dbpayments);
     }
 
 
@@ -108,40 +107,43 @@ const PaymentPage = ({ username }) => {
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
 
-            <div className='cover relative w-full' >
-                <img className="object-cover w-full h-[350]"
+            <div className='cover relative w-full flex items-center justify-start md:justify-center ' >
+                <img className="object-cover w-full h-full md:h-full"
                     src={currentUser?.coverpic || "/BG-Default2.jpg"} alt="" />
-                <div className="absolute -bottom-16 right-[45%] border-white overflow-hidden border-2 size-32 rounded-full ">
-                    <img className='rounded-full object-cover size-32' src={currentUser?.profilepic || "/profile2.jpg"} alt="profile pic" />
+                <div className="absolute -bottom-8 md:-bottom-16  border-white overflow-hidden border-[1px] md:border-2 size-16 md:size-32 rounded-full ml-5 md:ml-0">
+                    <img className='rounded-full object-cover size-16 md:size-32 ' src={currentUser?.profilepic || "/profile.svg"} alt="profile pic" />
                 </div>
             </div>
             <div className="flex items-center justify-center mt-16 flex-col text-center">
-                <div className='font-bold text-lg'>
-                    Lets help @{username} get a chai ☕️
+                <div className='font-bold text-lg mx-2'>
+                    Lets help
+                    <span className='font-bold'> @{username}</span> get a chai ☕️
                 </div>
-                <div className='text-slate-300'>
-                    <div>
+                <div className='text-slate-300 mx-2'>
+                    <div className='mx-2'>
                         {payments.length} Payment from our Supporters. {currentUser.name} is raising funds for a chai. Lets help him reach his goal!.
                     </div>
-                    <div>
+                    <div className='mx-2'>
                         {payments.length} • members • 107 posts • {payments.reduce((a, b) => a + b.amount, 0)}₹ raised so far.
                     </div>
                 </div>
-                <div className="payment flex gap-3 w-[85%] my-8">
-                    <div className="supp w-1/2 bg-slate-900 rounded-lg p-10">
+
+
+                <div className="payment flex gap-3 w-[85%] my-8 flex-col md:flex-row">
+                    <div className="supp w-full md:w-1/2 bg-slate-900 rounded-lg p-10">
 
                         {/* SHow list of all the Supporters as a leaderboard */}
-                        <h2 className='text-2xl text-center font-bold mb-5'>Supporters</h2>
+                        <h2 className='text-2xl text-center font-bold mb-5'>Top 10 Supporters</h2>
                         <ul className='flex flex-col items-start '>
                             {payments.length == 0 && <li className='text-center text-slate-100'>No payments yet. Be the first one to support!</li>}
                             {payments.map((p, i) => {
-                                return <li key={i} className="flex my-2 gap-1 items-center">
+                                return <li key={i} className="flex my-2 gap-1 items-start md:items-center text-start">
                                     < img width={33} src="avatar.gif" alt="user avatar" />
                                     <span>{p.name} donated<span className='font-bold'> ₹{p.amount} </span>with a message "{p.message}"</span></li>
                             })}
                         </ul>
                     </div>
-                    <div className="makePayment w-1/2 bg-slate-900 rounded-lg p-10">
+                    <div className="makePayment w-full md:w-1/2 bg-slate-900 rounded-lg p-10">
                         <h2 className='text-2xl font-bold mb-5'>Make a payment</h2>
 
 

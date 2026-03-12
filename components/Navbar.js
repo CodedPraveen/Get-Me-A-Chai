@@ -8,18 +8,16 @@ const Navbar = () => {
     const { data: session } = useSession();
 
     return (
-        <nav className='bg-gradient-to-r from-[#00092d] text-white flex justify-between items-center px-4 h-14'>
+        <nav className='bg-gradient-to-r from-[#00092d] text-white flex md:flex-row flex-col md:justify-between justify-between items-center md:px-4 px-0 md:h-16 h-24 py-4'>
             <div className="logo font-bold"><Link href="/"> GetMeAChai</Link> </div>
-            {/* <ul className='flex gap-4'>
-                <li>Home</li>
-                <li>About</li>
-                <li>Projects</li>
-                <li>Sign up</li>
-                <li>login</li>
-            </ul> */}
-            <div className='relative inline-block py-2' onMouseEnter={() => setShowdropdown(true)} onMouseLeave={() => setShowdropdown(false)}>
+
+            <div className='relative py-2 flex'>
                 {session && <>
-                    <button id="dropdownHoverButton" className="text-white mb2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <button onClick={() => setShowdropdown(!showdropdown)} onBlur={() => {
+                        setTimeout(() => {
+                            setShowdropdown(false)
+                        }, 100);
+                    }} id="dropdownHoverButton" data-dropdown-toggle="dropdown" className="text-white mb2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                         Welcome
                         <span className='ml-2'>
                             {/* <img width={28} className='ml-2' src="/Profile.svg" alt="Profile Photo" /> */}
@@ -47,7 +45,7 @@ const Navbar = () => {
                 </>
                 }
 
-                {session && <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 mx-4 py-2.5 text-center leading-5 " onClick={() => signOut()}>Logout</button>}
+                {session && <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 ml-4 py-2.5 text-center leading-5 " onClick={() => signOut()}>Logout</button>}
                 {!session && <Link href={"/login"}>
                     <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 mx-4 py-2.5 text-center leading-5 ">Login</button></Link>}
             </div >
