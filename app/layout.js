@@ -1,18 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionWrapper from "@/components/SessionWrapper";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import RemoveHash from "./removeHash";
 
 export const metadata = {
   title: "Get me A Chai",
@@ -26,6 +16,7 @@ export default function RootLayout({ children }) {
         <SessionWrapper>
           <Navbar />
           <div className="min-h-fit md:min-h-[84.5vh] ">
+            <RemoveHash />
             {children}
           </div>
           <Footer />
