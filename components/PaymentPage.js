@@ -130,7 +130,7 @@ const PaymentPage = ({ username }) => {
 
 
                 <div className="payment flex gap-3 w-[85%] my-8 flex-col md:flex-row">
-                    <div className="supp w-full md:w-1/2 bg-slate-900 rounded-lg p-10">
+                    <div className="supp w-full md:w-1/2 bg-slate-900 rounded-lg p-5 sm:p-10">
 
                         {/* SHow list of all the Supporters as a leaderboard */}
                         <h2 className='text-2xl text-center font-bold mb-5'>Top 10 Supporters</h2>
@@ -143,7 +143,7 @@ const PaymentPage = ({ username }) => {
                             })}
                         </ul>
                     </div>
-                    <div className="makePayment w-full md:w-1/2 bg-slate-900 rounded-lg p-10">
+                    <div className="makePayment w-full md:w-1/2 bg-slate-900 rounded-lg p-5 sm:p-10">
                         <h2 className='text-2xl font-bold mb-5'>Make a payment</h2>
 
 
@@ -151,18 +151,18 @@ const PaymentPage = ({ username }) => {
                             <input onChange={handleChange} value={paymentform.name} name='name' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Name' />
                             <input onChange={handleChange} value={paymentform.message} name='message' type="text" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Message' />
 
-                            <div className="flex ">
+                            <div className="flex flex-col sm:flex-row gap-2">
                                 <input onChange={handleChange} value={paymentform.amount} name='amount' type="number" className='w-full p-3 rounded-lg bg-slate-800 ' placeholder='Enter Amount' />
-                                <button onClick={() => pay(paymentform.amount)} type="button" className="text-white font-bold text-2xl hover:bg-purple-600 bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-4 ml-2 py-2.5 text-center leading-5 disabled:bg-[#D0342C] disabled:hover:text-red-500 w-32" disabled={paymentform.amount <= 0 || paymentform.message.length < 3} >Pay</button>
+                                <button onClick={() => pay(paymentform.amount)} type="button" className="text-white font-bold text-2xl hover:bg-purple-600 bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg sm:px-4 sm:ml-2 py-2.5 text-center leading-5 disabled:bg-[#D0342C] disabled:hover:text-red-500 w-full sm:w-32 m-0 " disabled={paymentform.amount <= 0 || paymentform.message.length < 3} >Pay</button>
                             </div>
 
                         </div>
 
                         {/* Or chose from these Amount */}
-                        <div className="flex gap-2 mt-5">
-                            <button className="bg-slate-800 p-3 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-32" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(10)} >Pay ₹10 </button>
-                            <button className="bg-slate-800 p-3 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-32" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(20)} >Pay ₹20 </button>
-                            <button className="bg-slate-800 p-3 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-32" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(30)} >Pay ₹30 </button>
+                        <div className="flex w-full gap-2 mt-5">
+                            <button className="bg-slate-800 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-1/3 p-0 sm:p-3 h-12 sm:h-full" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(10)} >Pay ₹10 </button>
+                            <button className="bg-slate-800 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-1/3 p-0 sm:p-3 h-12 sm:h-full" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(20)} >Pay ₹20 </button>
+                            <button className="bg-slate-800 rounded-lg disabled:bg-[#D0342C] disabled:hover:text-red-500 w-1/3 p-0 sm:p-3 h-12 sm:h-full" disabled={paymentform.name.length <= 2 || paymentform.message.length < 3} onClick={() => pay(30)} >Pay ₹30 </button>
                         </div>
                     </div>
                 </div>
