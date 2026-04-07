@@ -64,16 +64,13 @@ const PaymentPage = ({ username }) => {
             "currency": "INR",
             "name": "Get Me A Chai", //your business name
             "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
+            "image": "/Profile.svg", // logo here
             "order_id": orderId, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                "name": "Gaurav Kumar", //your customer's name
-                "email": "gaurav.kumar@example.com",
+                "name": "Praveen Kumar", //your customer's name
+                "email": "bishnoipraveen8809@gmail.com",
                 "contact": "+900000000000" //Provide the customer's phone number for better conversion rates 
-            },
-            "notes": {
-                "address": "Razorpay Corporate Office"
             },
             "theme": {
                 "color": "#3399cc"
@@ -109,9 +106,9 @@ const PaymentPage = ({ username }) => {
 
             <div className='cover relative w-full flex items-center justify-start md:justify-center ' >
                 <img className="object-cover w-full h-full md:h-full"
-                    src={currentUser?.coverpic || "/BG-Default2.jpg"} alt="" />
+                    src={currentUser?.coverpic || "/BG-Default.jpg"} alt="" />
                 <div className="absolute -bottom-8 md:-bottom-16  border-white overflow-hidden border-[1px] md:border-2 size-16 md:size-32 rounded-full ml-5 md:ml-0">
-                    <img className='rounded-full object-cover size-16 md:size-32 ' src={currentUser?.profilepic || "/profile.svg"} alt="profile pic" />
+                    <img className='rounded-full object-cover size-16 md:size-32 ' src={currentUser?.profilepic || "/Profile.svg"} alt="profile pic" />
                 </div>
             </div>
             <div className="flex items-center justify-center mt-16 flex-col text-center">
