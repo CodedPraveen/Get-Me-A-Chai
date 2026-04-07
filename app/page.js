@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center gap-4 text-white h-[35vh] px-5 md:px-0 text-xs md:text-base ">
-        <div className="font-bold text-2xl flex md:gap-20 gap-2 md:text-5xl justify-center items-center">
+      <div className="flex flex-col justify-center items-center gap-4 text-white h-full px-5 md:px-0 text-xs md:text-base lg:w-full lg:h-64">
+        <div className="font-bold text-2xl flex md:gap-20 gap-2 md:text-2xl lg:text-5xl justify-center items-center lg:gap-8">
           Get Me A Chai
           <span>
             <img className="w-16 invertImg" src="/tea.gif" alt="" />
@@ -14,7 +14,7 @@ export default function Home() {
         <p className="text-center md:text-left">
           A crowdfunding platform for creators. Get funded by your fans and followers.
         </p>
-        <p className="text-center md:text-left">
+        <p className="text-center xl:w-[50%] lg:w-[60%] sm:text-center md:w-[80%]">
           Get Me A Chai is a crowdfunding platform for creators. We help you get funded by your fans and followers. Start now!
         </p>
         <div className="flex gap-4">
