@@ -48,6 +48,9 @@ const Navbar = () => {
                 {session && <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 ml-4 py-2.5 text-center leading-5 " onClick={() => signOut()}>Logout</button>}
                 {!session && <Link href={"/login"}>
                     <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 mx-4 py-2.5 text-center leading-5 ">Login</button></Link>}
+                <Link href="/creators">
+                    <button type="button" className="text-white bg-slate-800 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-slate-500 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5">Creators</button>
+                </Link>
             </div >
         </nav >
     )
