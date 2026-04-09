@@ -5,7 +5,7 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook"
 import mongoose from 'mongoose';
 import User from '@/models/User';
-// import Payment from '@/models/Payment';
+import Payment from '@/models/Payment';
 import connectDB from '@/db/connectDB';
 
 const authoptions = NextAuth({

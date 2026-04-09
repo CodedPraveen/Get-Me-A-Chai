@@ -66,6 +66,52 @@ export const fetchpayments = async (username) => {
     }))
 }
 
+export const fetchCreators = async (search = "") => {
+    await connectDB()
+
+    const normalizedSearch = String(search || "").trim()
+    const userFilter = normalizedSearch
+        ? {
+            $or: [
+                { username: { $regex: normalizedSearch, $options: "i" } },
+                { name: { $regex: normalizedSearch, $options: "i" } }
+            ]
+        }
+        : {}
+
+    const users = await User.find(userFilter)
+        .select("username name profilepic")
+        .sort({ createdAt: -1 })
+        .limit(50)
+        .lean()
+
+    if (users.length === 0) return []
+
+    const usernames = users.map((u) => u.username)
+    const earnings = await Payment.aggregate([
+        { $match: { to_user: { $in: usernames }, done: true } },
+        {
+            $group: {
+                _id: "$to_user",
+                totalRaised: { $sum: "$amount" },
+                supporters: { $sum: 1 }
+            }
+        }
+    ])
+
+    const earningMap = new Map(
+        earnings.map((e) => [e._id, { totalRaised: e.totalRaised || 0, supporters: e.supporters || 0 }])
+    )
+
+    return users.map((u) => ({
+        username: u.username,
+        name: u.name || u.username,
+        profilepic: u.profilepic || "/Profile.svg",
+        totalRaised: earningMap.get(u.username)?.totalRaised || 0,
+        supporters: earningMap.get(u.username)?.supporters || 0
+    }))
+}
+
 export const updateProfile = async (data, oldusername) => {
     await connectDB()
     let ndata = Object.fromEntries(data)
